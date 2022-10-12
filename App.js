@@ -5,10 +5,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Favorites from "./screens/Favorites";
-import Categories from "./screens/Categories";
-import Meals from "./screens/Meals";
-import SpecificMeal from "./screens/SpecificMeal";
+import FavoritesScreen from "./screens/FavoritesScreen";
+import CategoriesScreen from "./screens/CategoriesScreen";
+import MealsScreen from "./screens/MealsScreen";
+import SpecificMealScreen from "./screens/SpecificMealScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,13 +19,16 @@ export default function App() {
 			<Stack.Navigator>
 				<Stack.Screen
 					name="Stack"
-					component={Categories}
+					component={CategoriesScreen}
 					options={{
 						headerShown: false,
 					}}
 				/>
-				<Stack.Screen name="Meals" component={Meals} />
-				<Stack.Screen name="SpecificMeal" component={SpecificMeal} />
+				<Stack.Screen name="Meals" component={MealsScreen} />
+				<Stack.Screen
+					name="SpecificMeal"
+					component={SpecificMealScreen}
+				/>
 			</Stack.Navigator>
 		);
 	};
@@ -46,7 +49,7 @@ export default function App() {
 					/>
 					<Tab.Screen
 						name="Favorites"
-						component={Favorites}
+						component={FavoritesScreen}
 						options={{}}
 					/>
 				</Tab.Navigator>
