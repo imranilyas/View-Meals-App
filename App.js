@@ -21,7 +21,7 @@ export default function App() {
 					name="Stack"
 					component={CategoriesScreen}
 					options={{
-						headerShown: false,
+						title: "Categories",
 					}}
 				/>
 				<Stack.Screen name="Meals" component={MealsScreen} />
@@ -41,11 +41,9 @@ export default function App() {
 					<Tab.Screen
 						name="Categories"
 						component={StackNav}
-						options={
-							{
-								// headerShown: false,
-							}
-						}
+						options={{
+							headerShown: false,
+						}}
 					/>
 					<Tab.Screen
 						name="Favorites"
