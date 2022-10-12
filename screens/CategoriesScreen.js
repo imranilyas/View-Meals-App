@@ -1,24 +1,33 @@
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import { StyleSheet, View, Text, FlatList, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { CATEGORIES } from "../data/dummy-data";
 
 const Categories = () => {
+	const navigate = useNavigation();
+
+	const navigateToMealsScreen = () => {
+		navigate.navigate("Meals");
+	};
+
 	return (
 		<View style={styles.container}>
 			<FlatList
 				data={CATEGORIES}
 				renderItem={(category) => {
 					return (
-						<View
-							style={[
-								styles.category,
-								{ backgroundColor: category.item.color },
-							]}
-						>
-							<Text style={styles.categoryText}>
-								{category.item.title}
-							</Text>
-						</View>
+						<Pressable onPress={navigateToMealsScreen}>
+							<View
+								style={[
+									styles.category,
+									{ backgroundColor: category.item.color },
+								]}
+							>
+								<Text style={styles.categoryText}>
+									{category.item.title}
+								</Text>
+							</View>
+						</Pressable>
 					);
 				}}
 				numColumns={2}
