@@ -7,7 +7,10 @@ const CategoryButton = ({ category, onPress }) => {
 
 	return (
 		<View style={styles.container}>
-			<Pressable onPress={pressHandler}>
+			<Pressable
+				onPress={pressHandler}
+				style={({ pressed }) => pressed && styles.pressed}
+			>
 				<View
 					style={[
 						styles.category,
@@ -26,17 +29,22 @@ const styles = StyleSheet.create({
 		marginHorizontal: 20,
 		marginVertical: 20,
 	},
+	pressed: {
+		opacity: 0.6,
+	},
 	category: {
 		width: 150,
 		height: 150,
 		justifyContent: "center",
 		borderRadius: 20,
+		shadowColor: "black",
+		shadowOffset: { width: 0, height: 2 },
+		shadowRadius: 4,
+		shadowOpacity: 0.5,
 	},
-
 	categoryText: {
 		alignSelf: "center",
 		fontSize: 16,
-		// padding: 20,
 		fontWeight: "bold",
 	},
 });
