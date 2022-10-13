@@ -1,15 +1,18 @@
 import { StyleSheet, View, Text } from "react-native";
 
+import { useRoute } from "@react-navigation/native";
+
 const Meals = () => {
-    return (
-        <View>
-            <Text>Meals</Text>
-        </View>
-    );
-}
+	const route = useRoute();
 
-const styles = StyleSheet.create({
+	return (
+		<View>
+			<Text>{route.params.id}</Text>
+			<Text>{route.params.mealTitle}</Text>
+		</View>
+	);
+};
 
-});
+const styles = StyleSheet.create({});
 
 export default Meals;

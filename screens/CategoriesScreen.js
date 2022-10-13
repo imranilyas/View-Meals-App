@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, FlatList, Pressable } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import CategoryButton from "../components/CategoryButton";
 import { useNavigation } from "@react-navigation/native";
 
@@ -20,18 +20,6 @@ const Categories = () => {
 				data={CATEGORIES}
 				renderItem={(category) => {
 					return (
-						// <Pressable onPress={navigateToMealsScreen}>
-						// 	<View
-						// 		style={[
-						// 			styles.category,
-						// 			{ backgroundColor: category.item.color },
-						// 		]}
-						// 	>
-						// 		<Text style={styles.categoryText}>
-						// 			{category.item.title}
-						// 		</Text>
-						// 	</View>
-						// </Pressable>
 						<CategoryButton
 							category={category.item}
 							onPress={navigateToMealsScreen}
