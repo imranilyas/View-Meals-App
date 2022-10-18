@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { Ionicons } from "@expo/vector-icons";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -28,6 +29,9 @@ export default function App() {
 				<Stack.Screen
 					name="SpecificMeal"
 					component={SpecificMealScreen}
+					options={{
+						title: "Meal Details",
+					}}
 				/>
 			</Stack.Navigator>
 		);
@@ -43,12 +47,27 @@ export default function App() {
 						component={StackNav}
 						options={{
 							headerShown: false,
+							tabBarIcon: ({ color, size }) => (
+								<Ionicons
+									name="ios-list-outline"
+									color={color}
+									size={size}
+								/>
+							),
 						}}
 					/>
 					<Tab.Screen
 						name="Favorites"
 						component={FavoritesScreen}
-						options={{}}
+						options={{
+							tabBarIcon: ({ color, size }) => (
+								<Ionicons
+									name="ios-star-outline"
+									color={color}
+									size={size}
+								/>
+							),
+						}}
 					/>
 				</Tab.Navigator>
 			</NavigationContainer>
