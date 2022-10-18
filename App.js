@@ -41,7 +41,12 @@ export default function App() {
 		<>
 			<StatusBar style="auto" />
 			<NavigationContainer>
-				<Tab.Navigator>
+				<Tab.Navigator
+					screenOptions={{
+						tabBarActiveTintColor: "blue",
+						tabBarInactiveTintColor: "red",
+					}}
+				>
 					<Tab.Screen
 						name="Categories"
 						component={StackNav}
