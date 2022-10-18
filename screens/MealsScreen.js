@@ -1,8 +1,9 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, FlatList } from "react-native";
 import { MEALS } from "../data/dummy-data";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
+import MealCard from "../components/MealCard";
 
 const Meals = () => {
 	const route = useRoute();
@@ -12,7 +13,9 @@ const Meals = () => {
 		meal.categoryIds.includes(route.params.id)
 	);
 
-	// console.log(list);
+	const navigateToSpecificScreen = (mealId) => {
+		navigate.navigate("SpecificMeal", { id: mealId });
+	};
 
 	useLayoutEffect(() => {
 		navigate.setOptions({
@@ -23,13 +26,26 @@ const Meals = () => {
 
 	return (
 		<View>
-			<Text>{route.params.id}</Text>
-			<Text>{route.params.mealTitle}</Text>
-			<Text>{list.title}</Text>
-			<Text>{list.affordability}</Text>
-			<Text>{list.complexity}</Text>
-			<Text>{list.imageUrl}</Text>
-			<Text>{list.duration}</Text>
+			<FlatList
+				data={list}
+				renderItem={(element) => {
+					return (
+						// <View>
+						<MealCard
+							meal={element.item}
+							onPress={navigateToSpecificScreen}
+						/>
+						/* <Text>{element.item.title}</Text>
+							<Text>{element.item.affordability}</Text>
+							<Text>{element.item.complexity}</Text>
+							<Text>{element.item.imageUrl}</Text>
+							<Text>{element.item.duration}</Text>
+						</View> */
+					);
+				}}
+			/>
+			{/* <Text>{route.params.id}</Text>
+			<Text>{route.params.mealTitle}</Text> */}
 		</View>
 	);
 };
