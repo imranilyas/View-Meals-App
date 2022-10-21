@@ -30,22 +30,15 @@ const Meals = () => {
 				data={list}
 				renderItem={(element) => {
 					return (
-						// <View>
 						<MealCard
 							meal={element.item}
 							onPress={navigateToSpecificScreen}
 						/>
-						/* <Text>{element.item.title}</Text>
-							<Text>{element.item.affordability}</Text>
-							<Text>{element.item.complexity}</Text>
-							<Text>{element.item.imageUrl}</Text>
-							<Text>{element.item.duration}</Text>
-						</View> */
 					);
 				}}
+				showsVerticalScrollIndicator={false}
+				alwaysBounceVertical={false}
 			/>
-			{/* <Text>{route.params.id}</Text>
-			<Text>{route.params.mealTitle}</Text> */}
 		</View>
 	);
 };
