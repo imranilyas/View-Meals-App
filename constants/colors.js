@@ -14,7 +14,7 @@ const COLORS = {
 	backgroundContentColor: "#575757",
 
 	// FONT COLOR FOR MEAL DETAILS
-	fontColor: "something",
+	fontColor: "#ededed",
 };
 
 export default COLORS;

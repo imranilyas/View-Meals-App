@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { MEALS } from "../data/dummy-data";
+import COLORS from "../constants/colors";
 
 const SpecificMeal = () => {
 	const route = useRoute();
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
 		fontSize: 22,
 		fontWeight: "bold",
 		marginVertical: 10,
+		color: COLORS.fontColor,
 	},
 
 	textContainer: {
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
 	text: {
 		marginHorizontal: 5,
 		fontStyle: "italic",
-		color: "#484848",
+		color: "#b5b5b5",
 	},
 
 	cautionText: {
@@ -105,12 +107,14 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		fontStyle: "italic",
 		textDecorationLine: "underline",
+		color: "white",
 	},
 
 	titleContainer: {
 		borderBottomWidth: 2,
 		marginHorizontal: 40,
 		marginVertical: 10,
+		borderBottomColor: "white",
 	},
 
 	titles: {
@@ -118,6 +122,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		fontWeight: "bold",
 		padding: 10,
+		color: "white",
 	},
 
 	listContainer: {
@@ -136,6 +141,7 @@ const styles = StyleSheet.create({
 	list: {
 		fontSize: 16,
 		width: "90%",
+		color: COLORS.fontColor,
 	},
 });
 
