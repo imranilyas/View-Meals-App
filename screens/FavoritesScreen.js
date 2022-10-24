@@ -1,15 +1,13 @@
 import { StyleSheet, View, Text } from "react-native";
 
 const Favorites = () => {
-    return (
-        <View>
-            <Text>Favorites</Text>
-        </View>
-    );
-}
+	return (
+		<View>
+			<Text>Favorites</Text>
+		</View>
+	);
+};
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
 
 export default Favorites;

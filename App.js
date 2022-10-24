@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
+import COLORS from "./constants/colors";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -24,7 +25,17 @@ export default function App() {
 
 	const StackNav = () => {
 		return (
-			<Stack.Navigator>
+			<Stack.Navigator
+				screenOptions={{
+					headerStyle: {
+						backgroundColor: COLORS.headerColor,
+					},
+					headerTintColor: COLORS.headerFontColor,
+					contentStyle: {
+						backgroundColor: COLORS.backgroundContentColor,
+					},
+				}}
+			>
 				<Stack.Screen
 					name="Stack"
 					component={CategoriesScreen}
@@ -54,12 +65,23 @@ export default function App() {
 
 	return (
 		<>
-			<StatusBar style="auto" />
+			<StatusBar style="light" />
 			<NavigationContainer>
 				<Tab.Navigator
+					sceneContainerStyle={{
+						backgroundColor: COLORS.backgroundContentColor,
+					}}
 					screenOptions={{
-						tabBarActiveTintColor: "blue",
-						tabBarInactiveTintColor: "red",
+						// Bottom Tab
+						tabBarStyle: { backgroundColor: COLORS.headerColor },
+						tabBarActiveTintColor: COLORS.iconActive,
+						tabBarInactiveTintColor: COLORS.iconInactive,
+
+						// Top Tab
+						headerStyle: {
+							backgroundColor: COLORS.headerColor,
+						},
+						headerTintColor: COLORS.headerFontColor,
 					}}
 				>
 					<Tab.Screen
