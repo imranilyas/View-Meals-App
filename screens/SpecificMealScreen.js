@@ -34,7 +34,7 @@ const SpecificMeal = () => {
 			<Text>Ingredients</Text>
 			<View>
 				{meal.ingredients.map((ingredient) => {
-					return <Text>{ingredient}</Text>;
+					return <Text key={ingredient}>{ingredient}</Text>;
 				})}
 			</View>
 
@@ -42,7 +42,7 @@ const SpecificMeal = () => {
 			<View>
 				{meal.steps.map((step, index) => {
 					return (
-						<Text>
+						<Text key={step}>
 							{index}. {step}
 						</Text>
 					);
