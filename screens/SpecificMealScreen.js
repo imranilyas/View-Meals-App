@@ -7,44 +7,68 @@ const SpecificMeal = () => {
 	const meal = MEALS.find((food) => food.id === route.params.id);
 
 	return (
-		<ScrollView>
+		<ScrollView showsVerticalScrollIndicator={false}>
 			<Image
 				resizeMode="stretch"
 				source={{ uri: meal.imageUrl }}
 				style={styles.img}
 			/>
+
 			<Text style={styles.mealTitle}>{meal.title}</Text>
-			<View>
-				<Text style={styles.textContainer}>
+
+			<View style={styles.textContainer}>
+				<Text style={styles.text}>
 					{meal.affordability.toUpperCase()}
 				</Text>
 				<Text style={styles.text}>{meal.complexity.toUpperCase()}</Text>
 				<Text style={styles.text}>{meal.duration}m</Text>
 			</View>
-			<View>
-				<Text>
+
+			<View style={styles.textContainer}>
+				<Text style={styles.cautionText}>
 					{meal.isGlutenFree ? "Gluten Free" : "Contains Gluten"}
 				</Text>
-				<Text>
+				<Text style={styles.cautionText}>
 					{meal.isVegetarian ? "Vegetarian" : "Not Vegetarian"}
 				</Text>
-				<Text>{meal.isVegan ? "Vegan" : "Not Vegan"}</Text>
+				<Text style={styles.cautionText}>
+					{meal.isVegan ? "Vegan" : "Not Vegan"}
+				</Text>
 			</View>
 
-			<Text>Ingredients</Text>
-			<View>
+			<View style={styles.titleContainer}>
+				<Text style={styles.titles}>Ingredients</Text>
+			</View>
+
+			<View style={styles.listContainer}>
 				{meal.ingredients.map((ingredient) => {
-					return <Text key={ingredient}>{ingredient}</Text>;
+					return (
+						<View
+							key={ingredient}
+							style={styles.listInnerContainer}
+						>
+							<Text
+								style={[styles.list, styles.bullet]}
+							>{`\u2022`}</Text>
+							<Text style={styles.list}>{ingredient}</Text>
+						</View>
+					);
 				})}
 			</View>
 
-			<Text>Directions</Text>
-			<View>
+			<View style={styles.titleContainer}>
+				<Text style={styles.titles}>Directions</Text>
+			</View>
+
+			<View style={styles.listContainer}>
 				{meal.steps.map((step, index) => {
 					return (
-						<Text key={step}>
-							{index}. {step}
-						</Text>
+						<View style={styles.listInnerContainer} key={step}>
+							<Text style={[styles.list, styles.bullet]}>
+								{index + 1}.
+							</Text>
+							<Text style={styles.list}>{step}</Text>
+						</View>
 					);
 				})}
 			</View>
@@ -53,18 +77,66 @@ const SpecificMeal = () => {
 };
 
 const styles = StyleSheet.create({
-	container: {},
-
 	img: {
-		// width: 400,
-		height: 250,
+		height: 275,
 	},
 
-	mealTitle: {},
+	mealTitle: {
+		textAlign: "center",
+		fontSize: 22,
+		fontWeight: "bold",
+		marginVertical: 5,
+	},
 
-	textContainer: {},
+	textContainer: {
+		flexDirection: "row",
+		justifyContent: "center",
+		marginVertical: 5,
+	},
 
-	text: {},
+	text: {
+		marginHorizontal: 5,
+		fontStyle: "italic",
+		color: "#484848",
+	},
+
+	cautionText: {
+		marginHorizontal: 5,
+		fontWeight: "bold",
+		fontStyle: "italic",
+		textDecorationLine: "underline",
+	},
+
+	titleContainer: {
+		borderBottomWidth: 2,
+		marginHorizontal: 40,
+		marginVertical: 10,
+	},
+
+	titles: {
+		textAlign: "center",
+		fontSize: 20,
+		fontWeight: "bold",
+		padding: 10,
+	},
+
+	listContainer: {
+		marginHorizontal: 40,
+	},
+
+	listInnerContainer: {
+		flexDirection: "row",
+		marginVertical: 4,
+	},
+
+	bullet: {
+		width: "10%",
+	},
+
+	list: {
+		fontSize: 16,
+		width: "90%",
+	},
 });
 
 export default SpecificMeal;
