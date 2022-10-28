@@ -1,9 +1,21 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 const Favorites = () => {
 	return (
 		<View>
-			<Text>Favorites</Text>
+			{/* <FlatList
+				data={list}
+				renderItem={(element) => {
+					return (
+						<MealCard
+							meal={element.item}
+							onPress={navigateToSpecificScreen}
+						/>
+					);
+				}}
+				showsVerticalScrollIndicator={false}
+				alwaysBounceVertical={false}
+			/> */}
 		</View>
 	);
 };
