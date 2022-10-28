@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
 import { useLayoutEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 
 import { MEALS } from "../data/dummy-data";
@@ -10,13 +11,17 @@ const SpecificMeal = () => {
 	const route = useRoute();
 	const navigate = useNavigation();
 
-	const [starred, setStarred] = useState(false);
+	const dispatch = useDispatch();
+	const list = useSelector((state) => state.favorite.ids);
+
+	const meal = MEALS.find((food) => food.id === route.params.id);
+	const initVal = list.includes(meal.id);
+
+	const [starred, setStarred] = useState(initVal);
 
 	const starHandler = () => {
 		setStarred(!starred);
 	};
-
-	const meal = MEALS.find((food) => food.id === route.params.id);
 
 	useLayoutEffect(() => {
 		navigate.setOptions({

@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native";
+import { useSelector } from "react-redux";
 
 const Favorites = () => {
 	return (
