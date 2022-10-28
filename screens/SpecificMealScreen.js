@@ -1,11 +1,36 @@
 import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { useLayoutEffect, useState } from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
+
 import { MEALS } from "../data/dummy-data";
 import COLORS from "../constants/colors";
 
 const SpecificMeal = () => {
 	const route = useRoute();
+	const navigate = useNavigation();
+
+	const [starred, setStarred] = useState(false);
+
+	const starHandler = () => {
+		setStarred(!starred);
+	};
+
 	const meal = MEALS.find((food) => food.id === route.params.id);
+
+	useLayoutEffect(() => {
+		navigate.setOptions({
+			headerRight: () => (
+				<Ionicons
+					name="star"
+					size={24}
+					color={starred ? "gold" : "#999999"}
+					onPress={starHandler}
+				/>
+			),
+		});
+		console.log("inside useLayoutEffect in specific meal screen");
+	}, [route, navigate, starred]);
 
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
