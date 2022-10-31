@@ -3,6 +3,7 @@ import { useLayoutEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
+import { addFavorite, removeFavorite } from "../redux/favorite";
 
 import { MEALS } from "../data/dummy-data";
 import COLORS from "../constants/colors";
@@ -20,7 +21,13 @@ const SpecificMeal = () => {
 	const [starred, setStarred] = useState(initVal);
 
 	const starHandler = () => {
-		setStarred(!starred);
+		if (starred) {
+			setStarred(false);
+			dispatch(removeFavorite({ id: meal.id }));
+		} else {
+			setStarred(true);
+			dispatch(addFavorite({ id: meal.id }));
+		}
 	};
 
 	useLayoutEffect(() => {

@@ -20,12 +20,6 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-	// const [starred, setStarred] = useState(false);
-
-	// const starHandler = () => {
-	// 	setStarred(!starred);
-	// };
-
 	const StackNav = () => {
 		return (
 			<Stack.Navigator
@@ -52,14 +46,6 @@ export default function App() {
 					component={SpecificMealScreen}
 					options={{
 						title: "Meal Details",
-						// headerRight: () => (
-						// 	<Ionicons
-						// 		name="star"
-						// 		size={24}
-						// 		color={starred ? "gold" : "#999999"}
-						// 		onPress={starHandler}
-						// 	/>
-						// ),
 					}}
 				/>
 			</Stack.Navigator>
