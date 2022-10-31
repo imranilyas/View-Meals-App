@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { useState } from "react";
 import { Provider } from "react-redux";
 
 import { StatusBar } from "expo-status-bar";

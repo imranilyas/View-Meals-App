@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
@@ -11,21 +11,20 @@ import COLORS from "../constants/colors";
 const SpecificMeal = () => {
 	const route = useRoute();
 	const navigate = useNavigation();
-
 	const dispatch = useDispatch();
+
+	// List of meal ids that have been starred
 	const list = useSelector((state) => state.favorite.ids);
 
 	const meal = MEALS.find((food) => food.id === route.params.id);
+
+	// Whether meal has been starred
 	const initVal = list.includes(meal.id);
 
-	const [starred, setStarred] = useState(initVal);
-
 	const starHandler = () => {
-		if (starred) {
-			setStarred(false);
+		if (initVal) {
 			dispatch(removeFavorite({ id: meal.id }));
 		} else {
-			setStarred(true);
 			dispatch(addFavorite({ id: meal.id }));
 		}
 	};
@@ -36,13 +35,12 @@ const SpecificMeal = () => {
 				<Ionicons
 					name="star"
 					size={24}
-					color={starred ? "gold" : "#999999"}
+					color={initVal ? "gold" : "#999999"}
 					onPress={starHandler}
 				/>
 			),
 		});
-		console.log("inside useLayoutEffect in specific meal screen");
-	}, [route, navigate, starred]);
+	}, [route, navigate, initVal]);
 
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
