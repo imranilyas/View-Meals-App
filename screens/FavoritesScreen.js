@@ -1,5 +1,4 @@
 import { useNavigation } from "@react-navigation/native";
-import { useEffect } from "react";
 import { View, Text, FlatList } from "react-native";
 import { useSelector } from "react-redux";
 
@@ -8,9 +7,6 @@ import { MEALS } from "../data/dummy-data";
 
 const Favorites = () => {
 	const ids = useSelector((state) => state.favorite.ids);
-	const list = MEALS.filter((meal) => {
-		ids.includes(meal.id);
-	});
 
 	const navigate = useNavigation();
 
